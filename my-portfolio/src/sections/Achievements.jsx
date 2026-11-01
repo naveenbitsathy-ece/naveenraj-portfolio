@@ -86,160 +86,203 @@ function Achievements() {
 
 
 
-   {/* ITEM 1: RISC-V Make-a-thon Certificate Placeholder */}
-<div className="cert-card">
-  <div className="cert-card-top">
-    
-    <a
-  className="cert-type"
-  href="https://lnkd.in/p/gXGHRHSQ"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  [Event & competition]
-</a>
 
-    <span className="cert-date">[BIT · 2026]</span>
-  </div>
+import React, { useRef, useState } from "react";
+import "./Participation.css";
+import SectionHeading from "../components/SectionHeading";
 
-  <h4 className="cert-name">RISC-V Make-a-thon Participation & Award Certificate </h4>
-
-  <p className="cert-issuer">
-   Organized by Bannari Amman Institute of Technology
-  </p>
-
-         <div
-  className="cert-placeholder-banner"
-  onClick={() =>
-    window.open(
-      "/images/certificates/riscv-hackathon-cert.jpg",
-      "_blank"
-    )
+const certificates = [
+  {
+    id: 1,
+    title: "RISC-V Make-a-thon Participation & Award Certificate",
+    category: "EVENT & COMPETITION",
+    organization: "Bannari Amman Institute of Technology",
+    year: "2026",
+    description:
+      "Participated in the RISC-V Make-a-thon and secured 3rd place for a hardware-accelerated DNA sequence analysis and motif detection system.",
+    image: "/images/certificates/riscv-hackathon-cert.jpg",
+    link: "https://lnkd.in/p/gXGHRHSQ"
+  },
+  {
+    id: 2,
+    title: "Cadence 2-Day Technical Workshop",
+    category: "TECHNICAL WORKSHOP",
+    organization: "Entuple Technology",
+    year: "2025",
+    description:
+      "Completed two days of hands-on training covering semi-custom and full-custom VLSI design using Cadence EDA tools.",
+    image: "/images/certificates/entuple_certificate.jpg",
+    link: "https://lnkd.in/p/ghrb-v7C"
+  },
+  {
+    id: 3,
+    title: "UTSAVA'26 – Technical Event",
+    category: "EVENT & COMPETITION",
+    organization: "Sri Ramakrishna Engineering College, Coimbatore",
+    year: "2026",
+    description:
+      "Participated in UTSAVA'26, a technical event organized by Sri Ramakrishna Engineering College.",
+    image: "/images/certificates/SREC_certificate.jpg",
+    link: null
   }
-  role="button"
-  tabIndex={0}
-  onKeyDown={(e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      window.open(
-        "/images/certificates/riscv-hackathon-cert.jpg",
-        "_blank"
-      );
-    }
-  }}
->
-  <span className="placeholder-chip">CERTIFICATE</span>
+];
 
-  <span className="placeholder-path">
-    Click here to see the certificate
-  </span>
-</div> 
+function Participation() {
+  const scrollRef = useRef(null);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
-</div>
- 
+  const scrollCertificates = (direction) => {
+    if (!scrollRef.current) return;
+
+    scrollRef.current.scrollBy({
+      left: direction * 360,
+      behavior: "smooth"
+    });
+  };
+
+  return (
+    <section id="participation" className="participation-section">
+      <div className="participation-container">
+
+        <SectionHeading
+          tag="09 // PARTICIPATION & RECOGNITION"
+          title="Certificates &"
+          highlight="Documents"
+          description="Showcasing hands-on exposure to technical competitions, innovation challenges, and collaborative engineering experiences."
+        />
+
+        <div className="participation-toolbar">
+          <span className="participation-count">
+            {String(certificates.length).padStart(2, "0")} DOCUMENTS
+          </span>
+
+          <div className="participation-controls">
+            <button
+              type="button"
+              className="participation-arrow"
+              onClick={() => scrollCertificates(-1)}
+              aria-label="Scroll certificates left"
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
+              className="participation-arrow"
+              onClick={() => scrollCertificates(1)}
+              aria-label="Scroll certificates right"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div className="participation-track" ref={scrollRef}>
+          {certificates.map((certificate) => (
+            <article className="participation-card" key={certificate.id}>
+
+              <button
+                type="button"
+                className="participation-image-button"
+                onClick={() => setSelectedCertificate(certificate)}
+                aria-label={`View ${certificate.title} certificate`}
+              >
+                <div className="participation-image-frame">
+                  <img
+                    src={certificate.image}
+                    alt={`${certificate.title} certificate`}
+                    className="participation-image"
+                    loading="lazy"
+                  />
+
+                  <span className="participation-view">
+                    VIEW DOCUMENT ↗
+                  </span>
+                </div>
+              </button>
+
+              <div className="participation-card-info">
+
+                <div className="participation-card-top">
+                  {certificate.link ? (
+                    <a
+                      className="participation-category"
+                      href={certificate.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      [{certificate.category}]
+                    </a>
+                  ) : (
+                    <span className="participation-category">
+                      [{certificate.category}]
+                    </span>
+                  )}
+                </div>
+
+                <h3>{certificate.title}</h3>
+
+                <p className="participation-description">
+                  {certificate.description}
+                </p>
+
+                <div className="participation-card-footer">
+                  <span>{certificate.organization}</span>
+                  <span className="participation-year">
+                    {certificate.year}
+                  </span>
+                </div>
+
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="participation-scroll-hint">
+          <span>←</span>
+          <span>SCROLL TO EXPLORE DOCUMENTS</span>
+          <span>→</span>
+        </div>
+
+      </div>
+
+      {selectedCertificate && (
+        <div
+          className="participation-modal"
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <button
+            type="button"
+            className="participation-modal-close"
+            onClick={() => setSelectedCertificate(null)}
+            aria-label="Close certificate preview"
+          >
+            ×
+          </button>
+
+          <div
+            className="participation-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedCertificate.image}
+              alt={`${selectedCertificate.title} full certificate`}
+            />
+
+            <div className="participation-modal-caption">
+              {selectedCertificate.title}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+}
+
+export default Participation;
 
 
-
- {/* ITEM 2: Cadence 2-Day Workshop */} 
-<div className="cert-card">
-  <div className="cert-card-top">
-    
-    <a
-  className="cert-type"
-  href="https://lnkd.in/p/ghrb-v7C"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  [TECHNICAL WORKSHOP]
-</a>
-
-    <span className="cert-date">[BIT · 2025]</span>
-  </div>
-
-  <h4 className="cert-name">Cadence 2-Day Technical Workshop </h4>
-
-  <p className="cert-issuer">
-    Two days handson training on semi custom and full custom in cadence eda tool  by entuple technology
-  </p>
-
-         <div
-  className="cert-placeholder-banner"
-  onClick={() =>
-    window.open(
-      "/images/certificates/entuple_certificate.jpg",
-      "_blank"
-    )
-  }
-  role="button"
-  tabIndex={0}
-  onKeyDown={(e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      window.open(
-        "/images/certificates/entuple_certificate.jpg",
-        "_blank"
-      );
-    }
-  }}
->
-  <span className="placeholder-chip">CERTIFICATE</span>
-
-  <span className="placeholder-path">
-    Click here to see the certificate
-  </span>
-</div> 
-
-</div>
-       
-       
-{/* ITEM 3: UTSAVA competition */}
-
-<div className="cert-card">
-  <div className="cert-card-top">
-    
-    <a
-  className="cert-type"
-  href="https://lnkd.in/p/ghrb-v7C"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  [TECHNICAL WORKSHOP]
-</a>
-
-    <span className="cert-date">[SREC · 2026]</span>
-  </div>
-
-  <h4 className="cert-name">UTSAVA’26, a technical event </h4>
-
-  <p className="cert-issuer">
-   Organized by Sri Ramakrishna Engineering College, Coimbatore 
-  </p>
-
-         <div
-  className="cert-placeholder-banner"
-  onClick={() =>
-    window.open(
-      "/images/certificates/SREC_certificate.jpg",
-      "_blank"
-    )
-  }
-  role="button"
-  tabIndex={0}
-  onKeyDown={(e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      window.open(
-        "/images/certificates/SREC_certificate.jpg",
-        "_blank"
-      );
-    }
-  }}
->
-  <span className="placeholder-chip">CERTIFICATE</span>
-
-  <span className="placeholder-path">
-    Click here to see the certificate
-  </span>
-</div> 
-
-</div>
           </div>
         </div>
       </div>
