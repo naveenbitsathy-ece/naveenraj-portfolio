@@ -1,16 +1,18 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import "./Achievements.css";
 import SectionHeading from "../components/SectionHeading";
 
-// CERTIFICATE DATA
 const certificates = [
   {
     id: 1,
     title: "RISC-V Make-a-thon Participation & Award Certificate",
     category: "EVENT & COMPETITION",
-    date: "BIT · 2026",
-    issuer: "Organized by Bannari Amman Institute of Technology",
+    organization: "BIT",
+    year: "2026",
+    description:
+      "Participated in the RISC-V Make-a-thon and secured 3rd place for a hardware-accelerated DNA sequence analysis and motif detection system.",
+    tags: ["RISC-V", "FPGA", "Hardware Accelerator"],
     image: "/images/certificates/riscv-hackathon-cert.jpg",
     link: "https://lnkd.in/p/gXGHRHSQ"
   },
@@ -18,9 +20,11 @@ const certificates = [
     id: 2,
     title: "Cadence 2-Day Technical Workshop",
     category: "TECHNICAL WORKSHOP",
-    date: "BIT · 2025",
-    issuer:
-      "Two days hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
+    organization: "BIT",
+    year: "2025",
+    description:
+      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
+    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
     image: "/images/certificates/entuple_certificate.jpg",
     link: "https://lnkd.in/p/ghrb-v7C"
   },
@@ -28,24 +32,30 @@ const certificates = [
     id: 3,
     title: "UTSAVA'26 – Technical Event",
     category: "EVENT & COMPETITION",
-    date: "S· 2026",
-    issuer:
-      "Organized by Sri Ramakrishna Engineering College, Coimbatore.",
+    organization: "SREC",
+    year: "2026",
+    description:
+      "Participated in UTSAVA'26, a technical event organized by Sri Ramakrishna Engineering College, Coimbatore.",
+    tags: ["Technical Event", "Innovation", "Problem Solving"],
     image: "/images/certificates/SREC_certificate.jpg",
     link: null
   }
 ];
 
 function Achievements() {
-  const openCertificate = (image) => {
-    window.open(image, "_blank", "noopener,noreferrer");
+  const carouselRef = useRef(null);
+
+  const scrollCertificates = (direction) => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: direction * carouselRef.current.clientWidth * 0.8,
+        behavior: "smooth"
+      });
+    }
   };
 
-  const handleCertificateKeyDown = (e, image) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openCertificate(image);
-    }
+  const openCertificate = (image) => {
+    window.open(image, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -59,14 +69,13 @@ function Achievements() {
           description="Competitive hackathons, algorithmic FPGA design competitions, and technical skill validations."
         />
 
-        {/* MAJOR FEATURED ACHIEVEMENT CARD */}
+        {/* MAJOR FEATURED ACHIEVEMENT - UNCHANGED */}
 
         <div className="major-achievement-hero-card">
           <div className="achievement-corner top-l" />
           <div className="achievement-corner bottom-r" />
 
           <div className="achievement-content-row">
-
             <div className="achievement-award-mark">
               <span className="trophy-symbol">★</span>
               <span className="award-rank">3RD PLACE</span>
@@ -74,7 +83,6 @@ function Achievements() {
             </div>
 
             <div className="achievement-details">
-
               <div className="achievement-meta">
                 <span className="event-name">RISC-V MAKE-A-THON</span>
                 <span className="meta-sep">/</span>
@@ -98,7 +106,6 @@ function Achievements() {
               </p>
 
               <div className="achievement-team-row">
-
                 <div className="team-unit">
                   <span className="unit-label">TEAM MEMBERS:</span>
                   <span className="unit-value">
@@ -112,87 +119,104 @@ function Achievements() {
                     RISC-V Soft Core & Custom RTL Coprocessor
                   </span>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
 
-        {/* CERTIFICATIONS, WORKSHOPS & EVENTS */}
+        {/* CERTIFICATE CAROUSEL */}
 
         <div className="certifications-subarea">
 
-          <div className="subarea-header">
-            <span className="subarea-tag">
-              // CERTIFICATIONS, WORKSHOPS & TECHNICAL EVENTS
-            </span>
+          <div className="cert-carousel-header">
+            <div>
+              <span className="subarea-tag">02 PROGRAMS</span>
+            </div>
 
-            <span className="subarea-notice">
-              Verified credentials & academic participation
-            </span>
+            <div className="cert-carousel-controls">
+              <button
+                type="button"
+                onClick={() => scrollCertificates(-1)}
+                aria-label="Previous certificates"
+              >
+                ←
+              </button>
+
+              <button
+                type="button"
+                onClick={() => scrollCertificates(1)}
+                aria-label="Next certificates"
+              >
+                →
+              </button>
+            </div>
           </div>
 
-          <div className="certifications-grid">
-
+          <div className="cert-carousel" ref={carouselRef}>
             {certificates.map((certificate) => (
-              <div className="cert-card" key={certificate.id}>
+              <article className="cert-carousel-card" key={certificate.id}>
 
-                <div className="cert-card-top">
+                <button
+                  type="button"
+                  className="cert-image-button"
+                  onClick={() => openCertificate(certificate.image)}
+                  aria-label={`View ${certificate.title}`}
+                >
+                  <img
+                    src={certificate.image}
+                    alt={certificate.title}
+                    className="cert-image"
+                    loading="lazy"
+                  />
+                  <span className="cert-image-overlay">
+                    VIEW CERTIFICATE ↗
+                  </span>
+                </button>
 
-                  {certificate.link ? (
+                <div className="cert-carousel-content">
+
+                  <div className="cert-carousel-category">
+                    {certificate.category}
+                  </div>
+
+                  <h3 className="cert-carousel-title">
+                    {certificate.title}
+                  </h3>
+
+                  <p className="cert-carousel-description">
+                    {certificate.description}
+                  </p>
+
+                  <div className="cert-tags">
+                    {certificate.tags.map((tag) => (
+                      <span className="cert-tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="cert-carousel-footer">
+                    <span>FOR: {certificate.organization}</span>
+                    <span>{certificate.year}</span>
+                  </div>
+
+                  {certificate.link && (
                     <a
-                      className="cert-type"
+                      className="cert-link"
                       href={certificate.link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      [{certificate.category}]
+                      VIEW EVENT ↗
                     </a>
-                  ) : (
-                    <span className="cert-type">
-                      [{certificate.category}]
-                    </span>
                   )}
 
-                  <span className="cert-date">
-                    [{certificate.date}]
-                  </span>
-
                 </div>
-
-                <h4 className="cert-name">
-                  {certificate.title}
-                </h4>
-
-                <p className="cert-issuer">
-                  {certificate.issuer}
-                </p>
-
-                <div
-                  className="cert-placeholder-banner"
-                  onClick={() => openCertificate(certificate.image)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) =>
-                    handleCertificateKeyDown(e, certificate.image)
-                  }
-                  aria-label={`View ${certificate.title}`}
-                >
-                  <span className="placeholder-chip">
-                    CERTIFICATE
-                  </span>
-
-                  <span className="placeholder-path">
-                    Click here to see the certificate
-                  </span>
-                </div>
-
-              </div>
+              </article>
             ))}
-
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );
