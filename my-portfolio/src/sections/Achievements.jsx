@@ -236,7 +236,7 @@ function Training() {
 
           <div className="cert-carousel-header">
             <div>
-              <span className="subarea-tag">02 PROGRAMS</span>
+             <span className="subarea-tag">02 PROGRAMS</span>
             </div>
 
             <div className="cert-carousel-controls">
