@@ -28,7 +28,7 @@ const certificates = [
     id: 3,
     title: "UTSAVA'26 – Technical Event",
     category: "EVENT & COMPETITION",
-    date: "SREC · 2026",
+    date: "S· 2026",
     issuer:
       "Organized by Sri Ramakrishna Engineering College, Coimbatore.",
     image: "/images/certificates/SREC_certificate.jpg",
