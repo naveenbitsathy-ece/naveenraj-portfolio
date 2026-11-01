@@ -87,7 +87,7 @@ function Education() {
           {/* DEGREE ITEM */}
           <article className="education-card">
             <div className="education-time-col">
-              <span className="edu-tag">[HSE]</span>
+              <span className="edu-tag">[Higher Secondary]</span>
               <span className="edu-period">[2022 – 2024]</span>
               <span className="edu-status-badge">COMPLETED</span>
             </div>
