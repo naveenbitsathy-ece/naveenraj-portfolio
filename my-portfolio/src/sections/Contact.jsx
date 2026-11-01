@@ -100,15 +100,6 @@ function Contact() {
 
             <div className="contact-channels-list">
 
-              <div className="channel-item">
-                <span className="channel-icon">◉</span>
-                <div className="channel-content">
-                  <span className="channel-label">WHATSAPP</span>
-                  <span className="channel-value">
-                    Available on request
-                  </span>
-                </div>
-              </div>
 
               <div className="channel-item">
                 <span className="channel-icon">⬡</span>
