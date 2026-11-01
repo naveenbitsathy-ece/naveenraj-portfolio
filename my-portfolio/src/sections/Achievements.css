@@ -310,3 +310,245 @@
 a.participation-category:hover {
   color: var(--gold, #f0c979);
 }
+
+
+/* =========================================
+   ACHIEVEMENTS - CERTIFICATE CAROUSEL
+   Matches Training section card layout
+========================================= */
+
+.achievements-section .certifications-subarea {
+  margin-top: 55px;
+  width: 100%;
+}
+
+.achievements-section .cert-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.achievements-section .cert-carousel-header .subarea-tag {
+  color: #b8c5d8;
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.achievements-section .cert-carousel-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.achievements-section .cert-carousel-controls button {
+  width: 48px;
+  height: 48px;
+  background: #101116;
+  border: 1px solid #292c35;
+  color: #ff9d00;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.achievements-section .cert-carousel-controls button:hover {
+  background: #ff9d00;
+  color: #08090c;
+  border-color: #ff9d00;
+}
+
+/* Horizontal scrolling area */
+
+.achievements-section .cert-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 26px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 12px;
+}
+
+.achievements-section .cert-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual card */
+
+.achievements-section .cert-carousel-card {
+  flex: 0 0 425px;
+  width: 425px;
+  min-width: 425px;
+  max-width: 425px;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  overflow: hidden;
+  background: #101116;
+  border: 1px solid #292c35;
+  scroll-snap-align: start;
+  transition: border-color 0.3s ease;
+}
+
+.achievements-section .cert-carousel-card:hover {
+  border-color: #a66a13;
+}
+
+/* Certificate image */
+
+.achievements-section .cert-image-button {
+  position: relative;
+  display: block;
+  flex: 0 0 280px;
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: #08090c;
+  cursor: pointer;
+}
+
+.achievements-section .cert-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.achievements-section .cert-carousel-card:hover .cert-image {
+  transform: scale(1.035);
+}
+
+.achievements-section .cert-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ff9d00;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.achievements-section .cert-carousel-card:hover .cert-image-overlay {
+  opacity: 1;
+}
+
+/* Content */
+
+.achievements-section .cert-carousel-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 26px 24px 20px;
+}
+
+.achievements-section .cert-carousel-category {
+  margin-bottom: 16px;
+  color: #ff9d00;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.achievements-section .cert-carousel-title {
+  margin: 0 0 14px;
+  color: #f4f4f5;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.achievements-section .cert-carousel-description {
+  margin: 0 0 20px;
+  color: #aebbd0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Technical tags */
+
+.achievements-section .cert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.achievements-section .cert-tag {
+  padding: 9px 12px;
+  color: #dce3ef;
+  font-family: monospace;
+  font-size: 11px;
+  border: 1px solid #292c35;
+  background: transparent;
+}
+
+/* Footer */
+
+.achievements-section .cert-carousel-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #292c35;
+  color: #b8c5d8;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.achievements-section .cert-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #ff9d00;
+  font-family: monospace;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.achievements-section .cert-link:hover {
+  color: #ffc15b;
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .achievements-section .cert-carousel-card {
+    flex-basis: 88%;
+    width: 88%;
+    min-width: 88%;
+    max-width: 88%;
+  }
+
+  .achievements-section .cert-image-button {
+    height: 220px;
+    min-height: 220px;
+    flex-basis: 220px;
+  }
+
+  .achievements-section .cert-carousel-content {
+    padding: 20px 18px;
+  }
+
+  .achievements-section .cert-carousel-title {
+    font-size: 19px;
+  }
+
+  .achievements-section .cert-carousel-description {
+    font-size: 14px;
+  }
+}
