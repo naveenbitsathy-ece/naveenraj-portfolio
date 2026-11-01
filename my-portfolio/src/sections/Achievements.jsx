@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import "./Training.css";
 import "./Achievements.css";
@@ -32,20 +31,16 @@ const certificates = [
 ];
 
 function Achievements() {
-  const carouselRef = useRef(null);
+  const scrollRef = useRef(null);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   const scrollCertificates = (direction) => {
-    if (!carouselRef.current) return;
+    if (!scrollRef.current) return;
 
-    carouselRef.current.scrollBy({
+    scrollRef.current.scrollBy({
       left: direction * 360,
       behavior: "smooth",
     });
-  };
-
-  const openCertificate = (image) => {
-    setSelectedCertificate(image);
   };
 
   return (
@@ -58,6 +53,7 @@ function Achievements() {
           description="Recognitions, competitions, and certifications that reflect hands-on engineering work and technical problem solving."
         />
 
+        {/* Hero Card Banner */}
         <div className="major-achievement-hero-card">
           <div className="achievement-corner top-l" />
           <div className="achievement-corner bottom-r" />
@@ -111,94 +107,88 @@ function Achievements() {
           </div>
         </div>
 
-        <div className="certifications-subarea">
-          <div className="cert-carousel-header">
-            <div>
-              <span className="subarea-tag">02 PROGRAMS</span>
-            </div>
+        {/* Certificate Section formatted like Training track */}
+        <div className="training-toolbar">
+          <span className="training-count">
+            {String(certificates.length).padStart(2, "0")} CERTIFICATES
+          </span>
 
-            <div className="cert-carousel-controls">
-              <button
-                type="button"
-                onClick={() => scrollCertificates(-1)}
-                aria-label="Previous certificates"
-              >
-                ←
-              </button>
+          <div className="training-controls">
+            <button
+              type="button"
+              className="training-arrow"
+              onClick={() => scrollCertificates(-1)}
+              aria-label="Scroll certificates left"
+            >
+              ←
+            </button>
 
-              <button
-                type="button"
-                onClick={() => scrollCertificates(1)}
-                aria-label="Next certificates"
-              >
-                →
-              </button>
-            </div>
+            <button
+              type="button"
+              className="training-arrow"
+              onClick={() => scrollCertificates(1)}
+              aria-label="Scroll certificates right"
+            >
+              →
+            </button>
           </div>
+        </div>
 
-          <div className="cert-carousel" ref={carouselRef}>
-            {certificates.map((certificate) => (
-              <article className="cert-carousel-card" key={certificate.id}>
-                <button
-                  type="button"
-                  className="cert-image-button"
-                  onClick={() => openCertificate(certificate.image)}
-                  aria-label={`View ${certificate.title}`}
-                >
+        <div className="training-track" ref={scrollRef}>
+          {certificates.map((cert) => (
+            <article className="training-card" key={cert.id}>
+              <button
+                type="button"
+                className="training-image-button"
+                onClick={() => setSelectedCertificate(cert)}
+                aria-label={`View ${cert.title}`}
+              >
+                <div className="training-image-frame">
                   <img
-                    src={certificate.image}
-                    alt={certificate.title}
-                    className="cert-image"
+                    src={cert.image}
+                    alt={cert.title}
+                    className="training-image"
                     loading="lazy"
                   />
-                  <span className="cert-image-overlay">
-                    VIEW CERTIFICATE ↗
-                  </span>
-                </button>
-
-                <div className="cert-carousel-content">
-                  <div className="cert-carousel-category">
-                    {certificate.category}
-                  </div>
-
-                  <h3 className="cert-carousel-title">{certificate.title}</h3>
-
-                  <p className="cert-carousel-description">
-                    {certificate.description}
-                  </p>
-
-                  <div className="cert-tags">
-                    {certificate.tags.map((tag) => (
-                      <span className="cert-tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="cert-carousel-footer">
-                    <span>FOR: {certificate.organization}</span>
-                    <span>{certificate.year}</span>
-                  </div>
-
-                  {certificate.link && (
-                    <a
-                      className="cert-link"
-                      href={certificate.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      VIEW EVENT ↗
-                    </a>
-                  )}
+                  <span className="training-view">VIEW CERTIFICATE ↗</span>
                 </div>
-              </article>
-            ))}
-          </div>
+              </button>
+
+              <div className="training-card-info">
+                <span className="training-category">{cert.category}</span>
+
+                <h3>{cert.title}</h3>
+
+                <p className="training-description">{cert.description}</p>
+
+                <div className="training-topics">
+                  {cert.tags.map((tag, index) => (
+                    <span key={index}>{tag}</span>
+                  ))}
+                </div>
+
+                <div className="training-card-footer">
+                  <span>FOR: {cert.organization}</span>
+                  <span>{cert.year}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="training-scroll-hint">
+          <span>←</span>
+          <span>SCROLL TO EXPLORE CERTIFICATES</span>
+          <span>→</span>
         </div>
       </div>
 
+      {/* Modal */}
       {selectedCertificate && (
-        <div className="training-modal" onClick={() => setSelectedCertificate(null)}>
+        <div
+          className="training-modal"
+          onClick={() => setSelectedCertificate(null)}
+        >
           <button
             type="button"
             className="training-modal-close"
@@ -212,7 +202,11 @@ function Achievements() {
             className="training-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <img src={selectedCertificate} alt="Certificate preview" />
+            <img
+              src={selectedCertificate.image}
+              alt={selectedCertificate.title}
+            />
+            <span>{selectedCertificate.title}</span>
           </div>
         </div>
       )}
