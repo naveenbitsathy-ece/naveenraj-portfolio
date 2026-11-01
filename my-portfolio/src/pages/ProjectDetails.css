@@ -1,0 +1,486 @@
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 8, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.project-modal-container {
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  background: #0d1016;
+  border: 1px solid var(--accent, #ff9d1c);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 157, 28, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* TOP BAR */
+.project-modal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #11141c;
+  border-bottom: 1px solid var(--border, #2a2e35);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+}
+
+.modal-tag-bracket {
+  color: #4b5260;
+}
+
+.modal-tag-code {
+  color: var(--gold, #f0c979);
+}
+
+.modal-status-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-left: 8px;
+}
+
+.modal-status-badge.completed {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10b981;
+  color: #34d399;
+}
+
+.modal-status-badge.award {
+  background: rgba(255, 157, 28, 0.15);
+  border: 1px solid var(--accent, #ff9d1c);
+  color: var(--accent, #ff9d1c);
+}
+
+.modal-status-badge.proposed {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid #6366f1;
+  color: #a5b4fc;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: 1px solid var(--border, #2a2e35);
+  color: var(--muted, #a1a9b4);
+  padding: 6px 12px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  border-color: var(--accent, #ff9d1c);
+  color: #ffffff;
+}
+
+.modal-close-btn .close-x {
+  color: var(--accent, #ff9d1c);
+}
+
+/* HEADER */
+.project-modal-header {
+  padding: 32px 32px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-category {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  color: var(--accent, #ff9d1c);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.modal-title {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--text, #f2f3f5);
+  margin: 12px 0 16px;
+}
+
+.modal-award-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(255, 157, 28, 0.1);
+  border: 1px solid var(--accent, #ff9d1c);
+  color: var(--gold, #f0c979);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.trophy-icon {
+  color: var(--accent, #ff9d1c);
+  font-size: 16px;
+}
+
+.modal-team-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted, #a1a9b4);
+  margin-bottom: 16px;
+}
+
+.team-label {
+  font-family: var(--mono, "DM Mono", monospace);
+  color: #8f97a3;
+}
+
+.team-names {
+  color: var(--text, #f2f3f5);
+  font-weight: 500;
+}
+
+.modal-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tech-chip {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  color: var(--text, #f2f3f5);
+  background: var(--surface, #101319);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 4px 10px;
+}
+
+/* WORKFLOW PANEL */
+.modal-workflow-panel {
+  padding: 24px 32px;
+  background: #101319;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.workflow-title {
+  display: block;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  color: var(--accent, #ff9d1c);
+  letter-spacing: 1.2px;
+  margin-bottom: 18px;
+}
+
+.workflow-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.workflow-flow-step {
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step-number-tag {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  color: var(--gold, #f0c979);
+  font-weight: 700;
+}
+
+.step-name {
+  font-size: 12px;
+  color: var(--text, #f2f3f5);
+}
+
+.step-desc {
+  font-size: 11px;
+  color: var(--muted, #a1a9b4);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.flow-arrow-indicator {
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent, #ff9d1c);
+  font-size: 14px;
+  z-index: 2;
+}
+
+/* BODY SECTIONS */
+.modal-body-sections {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.modal-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.block-title {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold, #f0c979);
+  letter-spacing: 0.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.block-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border, #2a2e35);
+}
+
+.block-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c1c7d0;
+  margin: 0;
+}
+
+.block-text.highlight-box {
+  background: rgba(255, 157, 28, 0.04);
+  border-left: 3px solid var(--accent, #ff9d1c);
+  padding: 14px 18px;
+}
+
+/* ARCHITECTURE & METHODOLOGY PRE FORMAT */
+.architecture-box,
+.methodology-box {
+  background: #090b0f;
+  border: 1px solid var(--border, #2a2e35);
+  padding: 18px 20px;
+}
+
+.arch-text-content,
+.method-text-content {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #b8bfc9;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+/* SPEC TABLE */
+.tools-spec-table {
+  border: 1px solid var(--border, #2a2e35);
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-table-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  gap: 16px;
+  font-size: 13px;
+}
+
+.spec-table-row:last-child {
+  border-bottom: none;
+}
+
+.tool-category-name {
+  font-family: var(--mono, "DM Mono", monospace);
+  color: var(--accent, #ff9d1c);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.tool-category-detail {
+  color: var(--text, #f2f3f5);
+}
+
+/* REPO SECTION */
+.repo-action-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface, #101319);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 18px 24px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.repo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.repo-label {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 9px;
+  color: var(--muted, #a1a9b4);
+  letter-spacing: 1px;
+}
+
+.repo-url {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 12px;
+  color: var(--gold, #f0c979);
+}
+
+.btn-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent, #ff9d1c);
+  color: #080a0e;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-repo-link:hover {
+  background: #ffb143;
+}
+
+/* RELATED PROJECTS */
+.related-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.related-project-card {
+  background: var(--surface, #101319);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.related-project-card:hover {
+  border-color: var(--accent, #ff9d1c);
+  transform: translateY(-2px);
+}
+
+.related-category {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 9px;
+  color: var(--accent, #ff9d1c);
+}
+
+.related-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text, #f2f3f5);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.related-action {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  color: var(--gold, #f0c979);
+  margin-top: auto;
+}
+
+/* MODAL FOOTER */
+.project-modal-footer {
+  padding: 20px 32px;
+  background: #11141c;
+  border-top: 1px solid var(--border, #2a2e35);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-modal-close-bottom {
+  background: transparent;
+  color: var(--text, #f2f3f5);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 10px 20px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-modal-close-bottom:hover {
+  border-color: var(--accent, #ff9d1c);
+  color: var(--accent, #ff9d1c);
+}
+
+@media (max-width: 900px) {
+  .workflow-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-arrow-indicator {
+    display: none;
+  }
+
+  .spec-table-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .related-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-modal-backdrop {
+    padding: 10px;
+  }
+
+  .project-modal-header,
+  .modal-workflow-panel,
+  .modal-body-sections,
+  .project-modal-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+

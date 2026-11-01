@@ -1,0 +1,156 @@
+.projects-page-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 32px;
+}
+
+.projects-page-header {
+  margin-bottom: 40px;
+}
+
+.page-meta-code {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  color: var(--accent, #ff9d1c);
+  letter-spacing: 1.5px;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text, #f2f3f5);
+  margin: 10px 0;
+}
+
+.page-subtitle {
+  color: var(--muted, #a1a9b4);
+  font-size: 14px;
+  max-width: 600px;
+}
+
+.projects-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.catalog-card {
+  background: var(--surface, #101319);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.catalog-index {
+  font-family: var(--mono, "DM Mono", monospace);
+  color: var(--accent, #ff9d1c);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.catalog-status {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 9px;
+  padding: 2px 6px;
+}
+
+.catalog-status.completed {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.catalog-status.award {
+  color: var(--accent, #ff9d1c);
+  background: rgba(255, 157, 28, 0.1);
+}
+
+.catalog-status.proposed {
+  color: #a5b4fc;
+  background: rgba(165, 180, 252, 0.1);
+}
+
+.catalog-category {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  color: var(--gold, #f0c979);
+  margin-bottom: 8px;
+}
+
+.catalog-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text, #f2f3f5);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.catalog-summary {
+  font-size: 13px;
+  color: var(--muted, #a1a9b4);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.catalog-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.catalog-tech-tag {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 9px;
+  color: #c0c6cf;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border, #2a2e35);
+  padding: 3px 6px;
+}
+
+.catalog-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 14px;
+}
+
+.btn-open-spec {
+  background: transparent;
+  color: var(--accent, #ff9d1c);
+  border: none;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.project-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+}
+
+.btn-certificate {
+  padding: 14px 24px;
+  background: transparent;
+  color: #f1f1f1;
+  border: 1px solid #292d35;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-certificate:hover {
+  background: #f59e0b;
+  color: #f59e0b;
+}

@@ -1,0 +1,120 @@
+.section-header-component {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.section-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  color: var(--muted, #a1a9b4);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.tag-bracket {
+  color: #4b5260;
+}
+
+.tag-accent-marker {
+  color: var(--accent, #ff9d1c);
+  font-weight: 700;
+}
+
+.tag-text {
+  color: var(--gold, #f0c979);
+}
+
+.section-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.section-header-title {
+  font-size: clamp(32px, 3.8vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  color: var(--text, #f2f3f5);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.section-header-title .highlight-text {
+  color: var(--gold, #f0c979);
+}
+
+.section-header-rule {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 40px;
+}
+
+.rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--border, #2a2e35) 0%,
+    rgba(255, 157, 28, 0.3) 100%
+  );
+}
+
+.rule-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent, #ff9d1c);
+  flex-shrink: 0;
+}
+
+.section-header-description {
+  max-width: 680px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted, #a1a9b4);
+  margin: 16px 0 0;
+}
+
+/* Center alignment variant */
+.section-header-component.center {
+  text-align: center;
+}
+
+.section-header-component.center .section-header-title-row {
+  justify-content: center;
+}
+
+.section-header-component.center .section-header-description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .section-header-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .section-header-title {
+    white-space: normal;
+    font-size: clamp(28px, 6vw, 36px);
+    letter-spacing: -1px;
+  }
+
+  .section-header-rule {
+    width: 100%;
+  }
+
+  .section-header-component {
+    margin-bottom: 36px;
+  }
+}
+

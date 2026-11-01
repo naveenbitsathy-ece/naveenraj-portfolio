@@ -1,0 +1,193 @@
+.footer-wrapper {
+  background: #080a0e;
+  border-top: 1px solid var(--border, #2a2e35);
+  padding: 70px 0 35px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--accent, #ff9d1c);
+  color: #080a0e;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--text, #f2f3f5);
+}
+
+.footer-tagline {
+  color: var(--muted, #a1a9b4);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  max-width: 440px;
+}
+
+.footer-focus {
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  color: var(--gold, #f0c979);
+  margin: 0;
+}
+
+.footer-heading {
+  display: block;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: var(--accent, #ff9d1c);
+  margin-bottom: 18px;
+}
+
+.footer-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+}
+
+.footer-nav a {
+  color: var(--muted, #a1a9b4);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+}
+
+.footer-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--surface, #101319);
+  border: 1px solid var(--border, #2a2e35);
+  color: var(--text, #f2f3f5);
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 11px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  max-width: 220px;
+}
+
+.footer-social-link:hover {
+  border-color: var(--accent, #ff9d1c);
+  color: var(--accent, #ff9d1c);
+  background: rgba(255, 157, 28, 0.05);
+}
+
+.footer-social-link .social-arrow {
+  color: var(--accent, #ff9d1c);
+}
+
+.footer-hardware-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 9px;
+  color: var(--muted, #a1a9b4);
+  letter-spacing: 0.5px;
+}
+
+.footer-hardware-badge .badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  font-size: 12px;
+  color: var(--muted, #a1a9b4);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono, "DM Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.meta-sep {
+  color: var(--accent, #ff9d1c);
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.college-name {
+  font-family: "Noto Sans Tamil", sans-serif;
+}
+
