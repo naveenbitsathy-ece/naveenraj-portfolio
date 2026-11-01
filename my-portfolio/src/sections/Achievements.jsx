@@ -1,9 +1,23 @@
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import "./Training.css";
 import "./Achievements.css";
 import SectionHeading from "../components/SectionHeading";
 
-const certificates = [
+const trainingPrograms = [
+   {
+    id: 1,
+    title: "RISC-V Make-a-thon Participation & Award Certificate",
+    category: "EVENT & COMPETITION",
+    organization: "BIT",
+    year: "2026",
+    description:
+      "Participated in the RISC-V Make-a-thon and secured 3rd place for a hardware-accelerated DNA sequence analysis and motif detection system.",
+    tags: ["RISC-V", "FPGA", "Hardware Accelerator"],
+    image: "/images/certificates/riscv-hackathon-cert.jpg",
+    link: "https://lnkd.in/p/gXGHRHSQ"
+  },
+
   {
     id: 1,
     title: "RISC-V Make-a-thon Participation & Award Certificate",
@@ -16,58 +30,150 @@ const certificates = [
     image: "/images/certificates/riscv-hackathon-cert.jpg",
     link: "https://lnkd.in/p/gXGHRHSQ"
   },
-  {
-    id: 2,
-    title: "Cadence 2-Day Technical Workshop",
-    category: "TECHNICAL WORKSHOP",
-    organization: "BIT",
-    year: "2025",
-    description:
-      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
-    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
-    image: "/images/certificates/entuple_certificate.jpg",
-    link: "https://lnkd.in/p/ghrb-v7C"
-  },
-  {
-    id: 3,
-    title: "UTSAVA'26 – Technical Event",
-    category: "EVENT & COMPETITION",
-    organization: "SREC",
-    year: "2026",
-    description:
-      "Participated in UTSAVA'26, a technical event organized by Sri Ramakrishna Engineering College, Coimbatore.",
-    tags: ["Technical Event", "Innovation", "Problem Solving"],
-    image: "/images/certificates/SREC_certificate.jpg",
-    link: null
-  }
+
+  
 ];
 
-function Achievements() {
-  const carouselRef = useRef(null);
+function Training() {
+  const scrollRef = useRef(null);
+  const [selectedTraining, setSelectedTraining] = useState(null);
 
-  const scrollCertificates = (direction) => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({
-        left: direction * carouselRef.current.clientWidth * 0.8,
-        behavior: "smooth"
-      });
-    }
-  };
+  const scrollTraining = (direction) => {
+    if (!scrollRef.current) return;
 
-  const openCertificate = (image) => {
-    window.open(image, "_blank", "noopener,noreferrer");
+    scrollRef.current.scrollBy({
+      left: direction * 360,
+      behavior: "smooth"
+    });
   };
 
   return (
-    <section id="achievements" className="achievements-section">
-      <div className="achievements-container">
+    <section id="training" className="training-section">
+      <div className="training-container">
 
         <SectionHeading
-          tag="04 // HONORS & RECOGNITION"
-          title="Achievements &"
-          highlight="Certifications"
-          description="Competitive hackathons, algorithmic FPGA design competitions, and technical skill validations."
+          tag="11 // TRAINING & KNOWLEDGE SHARING"
+          title="Training &"
+          highlight="Mentorship"
+          description="Sharing technical knowledge, guiding fellow students, and creating opportunities to learn engineering concepts through practical exposure."
         />
+
+        <div className="training-toolbar">
+          <span className="training-count">
+            {String(trainingPrograms.length).padStart(2, "0")} PROGRAMS
+          </span>
+
+          <div className="training-controls">
+            <button
+              type="button"
+              className="training-arrow"
+              onClick={() => scrollTraining(-1)}
+              aria-label="Scroll training left"
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
+              className="training-arrow"
+              onClick={() => scrollTraining(1)}
+              aria-label="Scroll training right"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div className="training-track" ref={scrollRef}>
+          {trainingPrograms.map((program) => (
+            <article className="training-card" key={program.id}>
+
+              <button
+                type="button"
+                className="training-image-button"
+                onClick={() => setSelectedTraining(program)}
+                aria-label={`View ${program.title} photograph`}
+              >
+                <div className="training-image-frame">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="training-image"
+                    loading="lazy"
+                  />
+
+                  <span className="training-view">
+                    VIEW IMAGE ↗
+                  </span>
+                </div>
+              </button>
+
+              <div className="training-card-info">
+                <span className="training-category">
+                  {program.category}
+                </span>
+
+                <h3>{program.title}</h3>
+
+                <p className="training-description">
+                  {program.description}
+                </p>
+
+                <div className="training-topics">
+                  {program.topics.map((topic, index) => (
+                    <span key={index}>{topic}</span>
+                  ))}
+                </div>
+
+                <div className="training-card-footer">
+                  <span>FOR: {program.audience.toUpperCase()}</span>
+                  <span>{program.date}</span>
+                </div>
+              </div>
+
+            </article>
+          ))}
+        </div>
+
+        <div className="training-scroll-hint">
+          <span>←</span>
+          <span>SCROLL TO EXPLORE TRAINING</span>
+          <span>→</span>
+        </div>
+
+      </div>
+
+      {selectedTraining && (
+        <div
+          className="training-modal"
+          onClick={() => setSelectedTraining(null)}
+        >
+          <button
+            type="button"
+            className="training-modal-close"
+            onClick={() => setSelectedTraining(null)}
+            aria-label="Close image preview"
+          >
+            ×
+          </button>
+
+          <div
+            className="training-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedTraining.image}
+              alt={selectedTraining.title}
+            />
+
+            <span>{selectedTraining.title}</span>
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+}
 
         {/* MAJOR FEATURED ACHIEVEMENT - UNCHANGED */}
 
