@@ -18,16 +18,28 @@ const certificates = [
   },
   {
     id: 2,
-    title: "Embedded Systems Design Workshop Certificate",
-    category: "WORKSHOP",
+    title: "Cadence 2-Day Technical Workshop",
+    category: "TECHNICAL WORKSHOP",
     organization: "BIT",
     year: "2025",
     description:
-      "Completed a hands-on workshop on firmware development, RTOS concepts, and embedded debugging techniques for modern microcontroller-based systems.",
-    tags: ["Embedded Systems", "RTOS", "Firmware"],
-    image: "/images/certificates/embedded-workshop-cert.jpg",
-    link: "https://example.com",
+      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
+    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
+    image: "/images/certificates/entuple_certificate.jpg",
+    link: "https://lnkd.in/p/ghrb-v7C"
   },
+   {
+    id: 3,
+    title: "UTSAVA'26 – Technical Event",
+    category: "EVENT & COMPETITION",
+    organization: "SREC",
+    year: "2026",
+    description:
+      "Participated in UTSAVA'26, a technical event organized by Sri Ramakrishna Engineering College, Coimbatore.",
+    tags: ["Technical Event", "Innovation", "Problem Solving"],
+    image: "/images/certificates/SREC_certificate.jpg",
+    link: null
+  }
 ];
 
 function Achievements() {
