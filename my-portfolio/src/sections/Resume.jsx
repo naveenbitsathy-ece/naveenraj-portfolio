@@ -64,13 +64,27 @@ function Resume() {
         {/* RESUME PREVIEW PANEL */}
         <div className="resume-preview-panel">
           {pdfAvailable ? (
-            <div className="pdf-embed-wrapper">
-              <iframe
-                src="/resume/resume_naveen.pdf"          // change here 
-                title="Naveenraj Resume Preview"
-                className="resume-iframe"
-              />
-            </div>
+           <div className="resume-pdf-preview">
+  {/* Desktop: keep your original viewer */}
+  <iframe
+    src="/resume/resume_naveen.pdf"
+    title="Resume Preview"
+    className="resume-desktop-pdf"
+  />
+
+  {/* Mobile: open PDF in the browser's document viewer */}
+  <div className="resume-mobile-pdf">
+    <a
+      href="/resume/resume_naveen.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="resume-mobile-open"
+    >
+      <span>VIEW MY RESUME</span>
+      <span>Open PDF ↗</span>
+    </a>
+  </div>
+</div>
           ) : (
             <div className="resume-structured-preview">
               <div className="resume-preview-header">
