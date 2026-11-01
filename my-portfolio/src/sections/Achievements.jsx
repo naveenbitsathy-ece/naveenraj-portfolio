@@ -8,7 +8,7 @@ const trainingPrograms = [
    {
     id: 1,
     title: "RISC-V Make-a-thon Participation & Award Certificate",
-    category: "EVENT & COMPETITION",
+    category: "EVENTs & COMPETITION",
     organization: "BIT",
     year: "2026",
     description:
