@@ -87,24 +87,7 @@ function Contact() {
             </p>
 
             <div className="contact-channels-list">
-
-              {/* WHATSAPP - NUMBER NOT DISPLAYED */}
-
-              <div className="channel-item">
-                <span className="channel-icon">◉</span>
-                <div className="channel-content">
-                  <span className="channel-label">WHATSAPP</span>
-                  <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="channel-value"
-                  >
-                    Message me on WhatsApp ↗
-                  </a>
-                </div>
-              </div>
-
+              
               {/* GITHUB */}
 
               <div className="channel-item">
