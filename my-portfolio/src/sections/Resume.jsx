@@ -65,11 +65,16 @@ function Resume() {
         <div className="resume-preview-panel">
           {pdfAvailable ? (
             <div className="pdf-embed-wrapper">
-              <iframe
-                src="/resume/resume_naveen.pdf"          // change here 
-                title="Naveenraj Resume Preview"
-                className="resume-iframe"
-              />
+             <iframe
+          src={`https://docs.google.com/gview?embedded=1&url=${encodeURIComponent(
+          window.location.origin + "/resume/resume_naveen.pdf"
+          )}`}
+          title="Naveenraj Resume"
+          className="resume-pdf-frame"
+          width="100%"
+          height="700"
+          style= {{ border: "none" }}
+            />
             </div>
           ) : (
             <div className="resume-structured-preview">
