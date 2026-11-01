@@ -21,7 +21,7 @@
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: 40px;
-  padding: 40px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border, #2a2e35);
 }
 
@@ -58,7 +58,7 @@
 .education-detail-col {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .edu-institution-line {
@@ -110,7 +110,7 @@
   gap: 10px;
   background: var(--surface, #101319);
   border: 1px solid var(--border, #2a2e35);
-  padding: 18px 20px;
+  padding: 12px 16px;
   max-width: 820px;
 }
 
