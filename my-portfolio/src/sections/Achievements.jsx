@@ -204,7 +204,7 @@ function Achievements() {
   [TECHNICAL WORKSHOP]
 </a>
 
-    <span className="cert-date">[BIT · 2025]</span>
+    <span className="cert-date">[SREC · 2026]</span>
   </div>
 
   <h4 className="cert-name">UTSAVA’26, a technical event </h4>
