@@ -1,19 +1,23 @@
 
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import SectionHeading from "../components/SectionHeading";
 
-// WhatsApp destination (not displayed on the page)
-const WHATSAPP_NUMBER = "917598657617";
+const SERVICE_ID = "service_l5g8mce";
+const TEMPLATE_ID = "template_kbxquvh";
+const PUBLIC_KEY = "v-8Oh7dVijjSWyvjt";
 
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     subject: "",
     message: ""
   });
 
   const [formNotice, setFormNotice] = useState(null);
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -22,41 +26,49 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsSending(true);
     setFormNotice(null);
 
-    const whatsappMessage =
-      `Hello Naveenraj!\n\n` +
-      `Name: ${formData.name}\n` +
-      `Subject: ${formData.subject}\n\n` +
-      `Message:\n${formData.message}`;
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        },
+        {
+          publicKey: PUBLIC_KEY
+        }
+      );
 
-    const whatsappUrl =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
-
-    const whatsappWindow = window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-    if (whatsappWindow) {
       setFormNotice({
         type: "success",
-        text: "WhatsApp opened with your message. Please press Send to deliver it."
+        text: "Your message has been sent successfully! Thank you for contacting me."
       });
 
       setFormData({
         name: "",
+        email: "",
         subject: "",
         message: ""
       });
-    } else {
+
+    } catch (error) {
+      console.error("EmailJS error:", error);
+
       setFormNotice({
         type: "error",
-        text: "WhatsApp could not be opened. Please allow pop-ups and try again."
+        text: "Unable to send your message. Please try again."
       });
+
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -81,14 +93,22 @@ function Contact() {
             </h3>
 
             <p className="contact-col-desc">
-              Whether you are discussing RTL design methodologies, FPGA
-              prototyping internships, RISC-V research, or hardware
-              co-design opportunities, feel free to reach out.
+              Whether you are discussing RTL design methodologies,
+              FPGA prototyping internships, RISC-V research, or
+              hardware co-design opportunities, feel free to reach out.
             </p>
 
             <div className="contact-channels-list">
-              
-              {/* GITHUB */}
+
+              <div className="channel-item">
+                <span className="channel-icon">◉</span>
+                <div className="channel-content">
+                  <span className="channel-label">WHATSAPP</span>
+                  <span className="channel-value">
+                    Available on request
+                  </span>
+                </div>
+              </div>
 
               <div className="channel-item">
                 <span className="channel-icon">⬡</span>
@@ -105,8 +125,6 @@ function Contact() {
                 </div>
               </div>
 
-              {/* LINKEDIN */}
-
               <div className="channel-item">
                 <span className="channel-icon">◈</span>
                 <div className="channel-content">
@@ -121,8 +139,6 @@ function Contact() {
                   </a>
                 </div>
               </div>
-
-              {/* LOCATION */}
 
               <div className="channel-item">
                 <span className="channel-icon">⚲</span>
@@ -145,17 +161,15 @@ function Contact() {
             </div>
           </div>
 
-          {/* WHATSAPP CONTACT FORM */}
+          {/* EMAIL CONTACT FORM */}
 
           <div className="contact-form-col">
             <form className="contact-form" onSubmit={handleSubmit}>
 
               <div className="form-header">
-                <span className="form-tag">// SEND A MESSAGE</span>
-                <span className="form-spec">WHATSAPP CONNECTION</span>
+                <span className="form-tag">// TRANSMIT INQUIRY</span>
+                <span className="form-spec">EMAIL CONNECTION</span>
               </div>
-
-              {/* NAME */}
 
               <div className="form-field-group">
                 <label htmlFor="contact-name" className="form-label">
@@ -174,7 +188,22 @@ function Contact() {
                 />
               </div>
 
-              {/* SUBJECT */}
+              <div className="form-field-group">
+                <label htmlFor="contact-email" className="form-label">
+                  EMAIL ADDRESS <span className="req">*</span>
+                </label>
+
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="name@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              </div>
 
               <div className="form-field-group">
                 <label htmlFor="contact-subject" className="form-label">
@@ -193,8 +222,6 @@ function Contact() {
                 />
               </div>
 
-              {/* MESSAGE */}
-
               <div className="form-field-group">
                 <label htmlFor="contact-message" className="form-label">
                   MESSAGE BODY <span className="req">*</span>
@@ -212,17 +239,16 @@ function Contact() {
                 />
               </div>
 
-              {/* SUBMIT */}
-
               <button
                 type="submit"
                 className="btn-submit-message"
+                disabled={isSending}
               >
-                <span>Send via WhatsApp</span>
+                <span>
+                  {isSending ? "Sending..." : "Send Message"}
+                </span>
                 <span className="submit-arrow">→</span>
               </button>
-
-              {/* STATUS */}
 
               {formNotice && (
                 <div className={`form-notice-box ${formNotice.type}`}>
