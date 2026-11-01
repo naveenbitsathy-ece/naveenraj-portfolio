@@ -300,3 +300,13 @@
 .cert-img-thumb:hover {
   opacity: 0.85;
 }
+
+.participation-category {
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.2s ease;
+}
+
+a.participation-category:hover {
+  color: var(--gold, #f0c979);
+}

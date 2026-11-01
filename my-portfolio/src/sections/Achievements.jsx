@@ -67,12 +67,6 @@ function Achievements() {
 
 
 
-
-
-
-
-
-
         {/* WORKSHOPS, HACKATHONS & CERTIFICATIONS GRID (With clear placeholders) */}
         <div className="certifications-subarea">
           <div className="subarea-header">
@@ -83,9 +77,6 @@ function Achievements() {
           <div className="certifications-grid">
 
             
-
-
-
 
 import React, { useRef, useState } from "react";
 import "./Participation.css";
