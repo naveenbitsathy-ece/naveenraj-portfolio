@@ -41,7 +41,7 @@ function Resume() {
 
           <div className="resume-buttons-col">
             <a
-              href="public/resume/resume_naveen.pdf"      // Change here for update 
+              href="/resume/resume_naveen.pdf"      // Change here for update 
               download="Naveenraj_VLSI_Resume.pdf"
               className="btn-resume-download"
             >
@@ -50,7 +50,7 @@ function Resume() {
             </a>
 
             <a
-              href="public/resume/resume_naveen.pdf"     //Change here 
+              href="/resume/resume_naveen.pdf"     //Change here 
               target="_blank"
               rel="noopener noreferrer"
               className="btn-resume-open"
@@ -66,7 +66,7 @@ function Resume() {
           {pdfAvailable ? (
             <div className="pdf-embed-wrapper">
               <iframe
-                src="public/resume/resume_naveen.pdf"          // change here 
+                src="/resume/resume_naveen.pdf"          // change here 
                 title="Naveenraj Resume Preview"
                 className="resume-iframe"
               />
