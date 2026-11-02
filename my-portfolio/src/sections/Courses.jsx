@@ -32,7 +32,6 @@ const coursesData = [
   topics: [
     "RISC-V Architecture",
     "RV32I Base ISA",
-    "Instruction Set Architecture",
     "Processor Fundamentals",
     "Maven Silicon"
   ],
