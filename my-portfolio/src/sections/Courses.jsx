@@ -18,7 +18,7 @@ const coursesData = [
       "Electronics Fundamentals",
     ],
     date: "10 October 2025 – 29 November 2025",
-    image: "/images/certificates/Cadence_training.jpg",
+    image: "/images/certificates/Cadence training.jpg",
   },
   {
     id: 2,
