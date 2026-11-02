@@ -60,7 +60,7 @@ function BeyondEngineering() {
       <div className="beyond-container">
 
         <SectionHeading
-          tag=" SOCIAL IMPACT & CONTRIBUTIONS"
+          tag=" 11 //SOCIAL IMPACT & CONTRIBUTIONS"
           title="Beyond"
           highlight="Engineering"
           description="Beyond academics and technology, I believe in giving back to society through meaningful actions and voluntary contributions."

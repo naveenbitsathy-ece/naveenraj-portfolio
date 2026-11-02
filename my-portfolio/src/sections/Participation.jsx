@@ -80,7 +80,7 @@ function Participation() {
       <div className="participation-container">
 
         <SectionHeading
-          tag="PARTICIPATION & RECOGNITION"
+          tag="10 // PARTICIPATION & RECOGNITION"
           title="Certificates &"
           highlight="Documents"
           description="Showcasing hands-on exposure to technical competitions, 
