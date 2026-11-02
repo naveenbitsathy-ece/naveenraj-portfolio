@@ -4,38 +4,57 @@ import "./Courses.css";
 import SectionHeading from "../components/SectionHeading";
 
 const coursesData = [
+    {
+  id: 1,
+  title: "VLSI Design & Verification Training",
+  category: "INDUSTRY-ORIENTED TRAINING",
+  audience: "VLSI Aspirants",
+  description:
+    "Currently undergoing technical training at Maven Silicon, strengthening knowledge in RTL design, Verilog, SystemVerilog, functional verification, and industry-oriented VLSI design methodologies.",
+  topics: [
+    "Verilog HDL",
+    "SystemVerilog",
+    "RTL Design",
+    "Functional Verification",
+    "VLSI Design"
+  ],
+  date: "ONGOING",
+  image: "/images/certificates/maven_certificate.png"
+},
       {
     id: 2,
     title: "Cadence 2-Day Technical Workshop",
     category: "TECHNICAL WORKSHOP",
     audience: "First-Year Students",    
     description:
-      "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
+      "Cadence 2-Day workshop on semi-custom and full-custom VLSI design, covering topics such as analog and digital design, hands-on learning, and electronics fundamentals.",
     topics: [
       "Analog Design",
       "Digital Design",
       "Hands-on Learning",
       "Electronics Fundamentals",
     ],
-    date: "10 October 2025 – 29 November 2025",
-    image: "/images/certificates/Cadence training.jpg",
+    date: "07 April 2025 – 08 April 2025",
+    image: "/images/certificates/entuple_certificate.jpg",
   },
-  {
-    id: 2,
-    title: "Student Mentor – Analog & Digital Design",
-    category: "STUDENT MENTORSHIP",
-    audience: "First-Year Students",
-    description:
-      "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
-    topics: [
-      "Analog Design",
-      "Digital Design",
-      "Hands-on Learning",
-      "Electronics Fundamentals",
-    ],
-    date: "10 October 2025 – 29 November 2025",
-    image: "/images/certificates/training_image.jpg",
-  },
+{
+  id: 3,
+  title: "NPTEL – Forests and Their Management",
+  category: "NPTEL ONLINE CERTIFICATION",
+  audience: "Online Learners",
+  description:
+    "Successfully completed the 12-week NPTEL Elite certification course on Forests and Their Management, offered by IIT Kanpur, achieving a consolidated score of 79%.",
+  topics: [
+    
+    "Forest Management",
+    "Environmental Studies",
+    "Sustainable Practices",
+    "Ecosystem Conservation",
+  ],
+  date: "January 2026 – April 2026",
+  image: "/images/certificates/Nptel_certificate.jpg"
+}
+
 ];
 
 function Courses() {
@@ -120,10 +139,7 @@ function Courses() {
                   ))}
                 </div>
 
-                <div className="training-card-footer">
-                  <span>FOR: {course.audience.toUpperCase()}</span>
-                  <span>{course.date}</span>
-                </div>
+                
               </div>
             </article>
           ))}
