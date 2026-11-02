@@ -38,9 +38,9 @@ const Courses = [
 
 function Courses() {
   const scrollRef = useRef(null);
-  const [selectedCourses, setSelectedCourses] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
-  const scrollCourses = (direction) => {
+  const scrollCourse = (direction) => {
     if (!scrollRef.current) return;
 
     scrollRef.current.scrollBy({
@@ -54,10 +54,10 @@ function Courses() {
       <div className="courses-container">
 
         <SectionHeading
-          tag="07 // Courses & Certifications"
+          tag="07 // COURSES & TRAINING"
           title="Courses &"
-          highlight="Certifications"
-          description="Participating in technical courses to strengthen my knowledge and explore emerging engineering technologies"
+          highlight="Training"
+          description="Exploring various courses and training programs to enhance technical skills and knowledge."
         />
 
         <div className="courses-toolbar">
@@ -69,7 +69,7 @@ function Courses() {
             <button
               type="button"
               className="courses-arrow"
-              onClick={() => scrollCourses(-1)}
+              onClick={() => scrollCourse(-1)}
               aria-label="Scroll courses left"
             >
               ←
@@ -78,7 +78,7 @@ function Courses() {
             <button
               type="button"
               className="courses-arrow"
-              onClick={() => scrollCourses(1)}
+              onClick={() => scrollCourse(1)}
               aria-label="Scroll courses right"
             >
               →
@@ -87,19 +87,19 @@ function Courses() {
         </div>
 
         <div className="courses-track" ref={scrollRef}>
-          {Courses.map((program) => (
-            <article className="courses-card" key={program.id}>
+          {Courses.map((course) => (
+            <article className="courses-card" key={course.id}>
 
               <button
                 type="button"
                 className="courses-image-button"
-                onClick={() => setSelectedCourses(program)}
-                aria-label={`View ${program.title} photograph`}
+                onClick={() => setSelectedCourse(course)}
+                aria-label={`View ${course.title} photograph`}
               >
                 <div className="courses-image-frame">
                   <img
-                    src={program.image}
-                    alt={program.title}
+                    src={course.image}
+                    alt={course.title}
                     className="courses-image"
                     loading="lazy"
                   />
@@ -112,24 +112,24 @@ function Courses() {
 
               <div className="courses-card-info">
                 <span className="courses-category">
-                  {program.category}
+                  {course.category}
                 </span>
 
-                <h3>{program.title}</h3>
+                <h3>{course.title}</h3>
 
                 <p className="courses-description">
-                  {program.description}
+                  {course.description}
                 </p>
 
                 <div className="courses-topics">
-                  {program.topics.map((topic, index) => (
+                  {course.topics.map((topic, index) => (
                     <span key={index}>{topic}</span>
                   ))}
                 </div>
 
                 <div className="courses-card-footer">
-                  <span>FOR: {program.audience.toUpperCase()}</span>
-                  <span>{program.date}</span>
+                  <span>FOR: {course.audience.toUpperCase()}</span>
+                  <span>{course.date}</span>
                 </div>
               </div>
 
@@ -145,15 +145,15 @@ function Courses() {
 
       </div>
 
-      {selectedCourses && (
+      {selectedCourse && (
         <div
           className="courses-modal"
-          onClick={() => setSelectedCourses(null)}
+          onClick={() => setSelectedCourse(null)}
         >
           <button
             type="button"
             className="courses-modal-close"
-            onClick={() => setSelectedCourses(null)}
+            onClick={() => setSelectedCourse(null)}
             aria-label="Close image preview"
           >
             ×
@@ -164,11 +164,11 @@ function Courses() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={selectedCourses.image}
-              alt={selectedCourses.title}
+              src={selectedCourse.image}
+              alt={selectedCourse.title}
             />
 
-            <span>{selectedCourses.title}</span>
+            <span>{selectedCourse.title}</span>
           </div>
         </div>
       )}
