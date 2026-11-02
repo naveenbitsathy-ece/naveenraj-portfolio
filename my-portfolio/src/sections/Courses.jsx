@@ -4,16 +4,17 @@ import "./Courses.css";
 import SectionHeading from "../components/SectionHeading";
 
 const coursesData = [
-  {
-    id: 1,
-    title: "Semi-Custom VLSI Design Training",
-    category: "TECHNICAL TRAINING",
-    audience: "Students",
+      {
+    id: 2,
+    title: "Cadence 2-Day Technical Workshop",
+    category: "TECHNICAL WORKSHOP",
+    organization: "BIT",
+    year: "2025",
     description:
-      "Conducting technical training sessions for students, introducing semi-custom VLSI design concepts, ASIC design flow, and industry-relevant EDA tools.",
-    topics: ["Semi-Custom Design", "ASIC Flow", "EDA Tools"],
-    date: "08 August 2025",
-    image: "/images/certificates/Cadence training.jpg",
+      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
+    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
+    image: "/images/certificates/entuple_certificate.jpg",
+    link: "https://lnkd.in/p/ghrb-v7C"
   },
   {
     id: 2,

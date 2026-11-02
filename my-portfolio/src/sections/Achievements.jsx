@@ -16,18 +16,7 @@ const certificates = [
     image: "/images/certificates/riscv-hackathon-cert.jpg",
     link: "https://lnkd.in/p/gXGHRHSQ",
   },
-  {
-    id: 2,
-    title: "Cadence 2-Day Technical Workshop",
-    category: "TECHNICAL WORKSHOP",
-    organization: "BIT",
-    year: "2025",
-    description:
-      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
-    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
-    image: "/images/certificates/entuple_certificate.jpg",
-    link: "https://lnkd.in/p/ghrb-v7C"
-  },
+
    {
     id: 3,
     title: "UTSAVA'26 – Technical Event",
