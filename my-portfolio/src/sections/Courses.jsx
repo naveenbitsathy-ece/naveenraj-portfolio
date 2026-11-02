@@ -23,8 +23,8 @@ const coursesData = [
   {
     id: 2,
     title: "Student Mentor – Analog & Digital Design",
-    category: null,
-    audience: null,
+    category: "STUDENT MENTORSHIP",
+    audience: "First-Year Students",
     description:
       "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
     topics: [
