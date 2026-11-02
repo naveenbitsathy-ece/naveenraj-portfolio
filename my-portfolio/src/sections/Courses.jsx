@@ -6,7 +6,7 @@ import SectionHeading from "../components/SectionHeading";
 const coursesData = [
     {
   id: 1,
-  title: "Maven-silicon VLSI Design & Verification Training",
+  title: "Maven-silicon VLSI Design & Verification Training(Ongoing)",
   category: "INDUSTRY-ORIENTED TRAINING",
   audience: "VLSI Aspirants",
   description:
@@ -28,7 +28,7 @@ const coursesData = [
   category: "INDUSTRY-ORIENTED ONLINE COURSE",
   audience: "VLSI & RISC-V Aspirants",
   description:
-    "Successfully completed an online course on the RISC-V Processor, focusing on the RV32I Base Instruction Set Architecture (ISA), offered by Maven Silicon, a RISC-V Training Partner.",
+    "Successfully completed an online course on the RISC-V Processor, focusing on the RV32I Base Instruction Set Architecture (ISA), offered by Maven Silicon.",
   topics: [
     "RISC-V Architecture",
     "RV32I Base ISA",
