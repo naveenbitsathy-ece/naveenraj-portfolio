@@ -1,267 +1,177 @@
 
-import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
-import "./Contact.css";
+import React, { useRef, useState } from "react";
+import "./Courses.css";
 import SectionHeading from "../components/SectionHeading";
 
-const SERVICE_ID = "service_l5g8mce";
-const TEMPLATE_ID = "template_kbxquvh";
-const PUBLIC_KEY = "v-8Oh7dVijjSWyvjt";
+const courses = [
+  {
+    id: 1,
+    title: "Semi-Custom VLSI Design Training",
+    category: "TECHNICAL TRAINING",
+    audience: "Students",
+    description:
+      "Conducting technical training sessions for students, introducing semi-custom VLSI design concepts, ASIC design flow, and industry-relevant EDA tools.",
+    topics: ["Semi-Custom Design", "ASIC Flow", "EDA Tools"],
+    date: "08 August 2025",
+    image: "/images/certificates/Cadence%20training.jpg"
+  },
+  {
+    id: 2,
+    title: "Student Mentor – Analog & Digital Design",
+    category: "STUDENT MENTORSHIP",
+    audience: "First-Year Students",
+    description:
+      "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
+    topics: [
+      "Analog Design",
+      "Digital Design",
+      "Hands-on Learning",
+      "Electronics Fundamentals"
+    ],
+    date: "10 October 2025 – 29 November 2025",
+    image: "/images/certificates/training_image.jpg"
+  }
+];
 
-function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
+function Courses() {
+  const scrollRef = useRef(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
-  const [formNotice, setFormNotice] = useState(null);
-  const [isSending, setIsSending] = useState(false);
+  const scrollCourses = (direction) => {
+    if (!scrollRef.current) return;
 
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setIsSending(true);
-    setFormNotice(null);
-
-    try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        },
-        {
-          publicKey: PUBLIC_KEY
-        }
-      );
-
-      setFormNotice({
-        type: "success",
-        text: "Your message has been sent successfully! Thank you for contacting me."
-      });
-
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
-      });
-
-    } catch (error) {
-      console.error("EmailJS error:", error);
-
-      setFormNotice({
-        type: "error",
-        text: "Unable to send your message. Please try again."
-      });
-
-    } finally {
-      setIsSending(false);
-    }
+    scrollRef.current.scrollBy({
+      left: direction * 360,
+      behavior: "smooth"
+    });
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <div className="contact-container">
+    <section id="courses" className="courses-section">
+      <div className="courses-container">
 
         <SectionHeading
-          tag="08 // GET IN TOUCH"
-          title="Let's"
-          highlight="Connect"
-          description="I am interested in connecting with engineers, researchers, and teams working in VLSI, digital design, FPGA development, and hardware acceleration."
+          tag="07 // COURSES & CERTIFICATIONS"
+          title="Courses &"
+          highlight="Certifications"
+          description="Participating in technical courses to strengthen my knowledge and explore emerging engineering technologies."
         />
 
-        <div className="contact-grid">
+        <div className="courses-toolbar">
+          <span className="courses-count">
+            {String(courses.length).padStart(2, "0")} PROGRAMS
+          </span>
 
-          {/* CONTACT INFORMATION */}
+          <div className="courses-controls">
+            <button
+              type="button"
+              className="courses-arrow"
+              onClick={() => scrollCourses(-1)}
+              aria-label="Scroll courses left"
+            >
+              ←
+            </button>
 
-          <div className="contact-info-col">
-            <h3 className="contact-col-title">
-              Professional Correspondence
-            </h3>
-
-            <p className="contact-col-desc">
-              Whether you are discussing RTL design methodologies,
-              FPGA prototyping internships, RISC-V research, or
-              hardware co-design opportunities, feel free to reach out.
-            </p>
-
-            <div className="contact-channels-list">
-
-
-              <div className="channel-item">
-                <span className="channel-icon">⬡</span>
-                <div className="channel-content">
-                  <span className="channel-label">GITHUB REGISTRY</span>
-                  <a
-                    href="https://github.com/naveenbitsathy-ece"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="channel-value"
-                  >
-                    github.com/naveenbitsathy-ece
-                  </a>
-                </div>
-              </div>
-
-              <div className="channel-item">
-                <span className="channel-icon">◈</span>
-                <div className="channel-content">
-                  <span className="channel-label">LINKEDIN NETWORK</span>
-                  <a
-                    href="https://www.linkedin.com/in/naveenraj07/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="channel-value"
-                  >
-                    linkedin.com/in/naveenraj07
-                  </a>
-                </div>
-              </div>
-
-              <div className="channel-item">
-                <span className="channel-icon">⚲</span>
-                <div className="channel-content">
-                  <span className="channel-label">LOCATION</span>
-                  <span className="channel-value plain">
-                    Tamil Nadu, India
-                  </span>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="contact-meta-card">
-              <span className="meta-card-tag">// AVAILABILITY</span>
-              <p className="meta-card-text">
-                Available for VLSI / RTL Design Engineer internships,
-                graduate trainee roles, and collaborative FPGA projects.
-              </p>
-            </div>
+            <button
+              type="button"
+              className="courses-arrow"
+              onClick={() => scrollCourses(1)}
+              aria-label="Scroll courses right"
+            >
+              →
+            </button>
           </div>
+        </div>
 
-          {/* EMAIL CONTACT FORM */}
-
-          <div className="contact-form-col">
-            <form className="contact-form" onSubmit={handleSubmit}>
-
-              <div className="form-header">
-                <span className="form-tag">// TRANSMIT INQUIRY</span>
-                <span className="form-spec">EMAIL CONNECTION</span>
-              </div>
-
-              <div className="form-field-group">
-                <label htmlFor="contact-name" className="form-label">
-                  YOUR NAME <span className="req">*</span>
-                </label>
-
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="e.g. John Doe / Hiring Team"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-field-group">
-                <label htmlFor="contact-email" className="form-label">
-                  EMAIL ADDRESS <span className="req">*</span>
-                </label>
-
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="name@company.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-field-group">
-                <label htmlFor="contact-subject" className="form-label">
-                  SUBJECT / TOPIC <span className="req">*</span>
-                </label>
-
-                <input
-                  id="contact-subject"
-                  type="text"
-                  name="subject"
-                  required
-                  placeholder="e.g. VLSI Internship / FPGA Collaboration"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-field-group">
-                <label htmlFor="contact-message" className="form-label">
-                  MESSAGE BODY <span className="req">*</span>
-                </label>
-
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Write your message here..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="form-textarea"
-                />
-              </div>
+        <div className="courses-track" ref={scrollRef}>
+          {courses.map((program) => (
+            <article className="courses-card" key={program.id}>
 
               <button
-                type="submit"
-                className="btn-submit-message"
-                disabled={isSending}
+                type="button"
+                className="courses-image-button"
+                onClick={() => setSelectedCourse(program)}
+                aria-label={`View ${program.title} photograph`}
               >
-                <span>
-                  {isSending ? "Sending..." : "Send Message"}
-                </span>
-                <span className="submit-arrow">→</span>
+                <div className="courses-image-frame">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="courses-image"
+                    loading="lazy"
+                  />
+
+                  <span className="courses-view">
+                    VIEW IMAGE ↗
+                  </span>
+                </div>
               </button>
 
-              {formNotice && (
-                <div className={`form-notice-box ${formNotice.type}`}>
-                  <span className="notice-icon">
-                    {formNotice.type === "success" ? "✓" : "⚠"}
-                  </span>
+              <div className="courses-card-info">
+                <span className="courses-category">
+                  {program.category}
+                </span>
 
-                  <div className="notice-content">
-                    <span className="notice-msg">
-                      {formNotice.text}
-                    </span>
-                  </div>
+                <h3>{program.title}</h3>
+
+                <p className="courses-description">
+                  {program.description}
+                </p>
+
+                <div className="courses-topics">
+                  {program.topics.map((topic) => (
+                    <span key={topic}>{topic}</span>
+                  ))}
                 </div>
-              )}
 
-            </form>
-          </div>
+                <div className="courses-card-footer">
+                  <span>FOR: {program.audience.toUpperCase()}</span>
+                  <span>{program.date}</span>
+                </div>
+              </div>
 
+            </article>
+          ))}
         </div>
+
+        <div className="courses-scroll-hint">
+          <span>←</span>
+          <span>SCROLL TO EXPLORE COURSES</span>
+          <span>→</span>
+        </div>
+
       </div>
+
+      {selectedCourse && (
+        <div
+          className="courses-modal"
+          onClick={() => setSelectedCourse(null)}
+        >
+          <button
+            type="button"
+            className="courses-modal-close"
+            onClick={() => setSelectedCourse(null)}
+            aria-label="Close image preview"
+          >
+            ×
+          </button>
+
+          <div
+            className="courses-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedCourse.image}
+              alt={selectedCourse.title}
+            />
+
+            <span>{selectedCourse.title}</span>
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }
 
-export default Contact;
+export default Courses;
