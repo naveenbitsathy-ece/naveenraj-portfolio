@@ -9,6 +9,7 @@ import Achievements from "./sections/Achievements";
 import Education from "./sections/Education";
 import Blog from "./sections/Blog";
 import Resume from "./sections/Resume";
+import Courses from "./sections/Courses";
 import Training from "./sections/Training";
 import Participation from "./sections/Participation";
 import BeyondEngineering from "./sections/BeyondEngineering";
@@ -30,6 +31,7 @@ function App() {
         <Education />
         <Blog />
         <Resume />
+        <Courses/>
         <Training />
         <Participation/>
         <BeyondEngineering/>

@@ -54,7 +54,7 @@ function Training() {
       <div className="training-container">
 
         <SectionHeading
-          tag="11 // TRAINING & KNOWLEDGE SHARING"
+          tag="07 // TRAINING & KNOWLEDGE SHARING"
           title="Training &"
           highlight="Mentorship"
           description="Sharing technical knowledge, guiding fellow students, and creating opportunities to learn engineering concepts through practical exposure."
