@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import "./Courses.css";
 import SectionHeading from "../components/SectionHeading";
 
-const trainingPrograms = [
+const Courses = [
   {
     id: 1,
     title: "Semi-Custom VLSI Design Training",
@@ -36,11 +36,11 @@ const trainingPrograms = [
   
 ];
 
-function Training() {
+function Courses() {
   const scrollRef = useRef(null);
-  const [selectedTraining, setSelectedTraining] = useState(null);
+  const [selectedCourses, setSelectedCourses] = useState(null);
 
-  const scrollTraining = (direction) => {
+  const scrollCourses = (direction) => {
     if (!scrollRef.current) return;
 
     scrollRef.current.scrollBy({
@@ -50,84 +50,84 @@ function Training() {
   };
 
   return (
-    <section id="training" className="training-section">
-      <div className="training-container">
+    <section id="courses" className="courses-section">
+      <div className="courses-container">
 
         <SectionHeading
           tag="07 // Courses & Certifications"
-          title="Training &"
-          highlight="Mentorship"
+          title="Courses &"
+          highlight="Certifications"
           description="Participating in technical courses to strengthen my knowledge and explore emerging engineering technologies"
         />
 
-        <div className="training-toolbar">
-          <span className="training-count">
-            {String(trainingPrograms.length).padStart(2, "0")} PROGRAMS
+        <div className="courses-toolbar">
+          <span className="courses-count">
+            {String(Courses.length).padStart(2, "0")} PROGRAMS
           </span>
 
-          <div className="training-controls">
+          <div className="courses-controls">
             <button
               type="button"
-              className="training-arrow"
-              onClick={() => scrollTraining(-1)}
-              aria-label="Scroll training left"
+              className="courses-arrow"
+              onClick={() => scrollCourses(-1)}
+              aria-label="Scroll courses left"
             >
               ←
             </button>
 
             <button
               type="button"
-              className="training-arrow"
-              onClick={() => scrollTraining(1)}
-              aria-label="Scroll training right"
+              className="courses-arrow"
+              onClick={() => scrollCourses(1)}
+              aria-label="Scroll courses right"
             >
               →
             </button>
           </div>
         </div>
 
-        <div className="training-track" ref={scrollRef}>
-          {trainingPrograms.map((program) => (
-            <article className="training-card" key={program.id}>
+        <div className="courses-track" ref={scrollRef}>
+          {Courses.map((program) => (
+            <article className="courses-card" key={program.id}>
 
               <button
                 type="button"
-                className="training-image-button"
-                onClick={() => setSelectedTraining(program)}
+                className="courses-image-button"
+                onClick={() => setSelectedCourses(program)}
                 aria-label={`View ${program.title} photograph`}
               >
-                <div className="training-image-frame">
+                <div className="courses-image-frame">
                   <img
                     src={program.image}
                     alt={program.title}
-                    className="training-image"
+                    className="courses-image"
                     loading="lazy"
                   />
 
-                  <span className="training-view">
+                  <span className="courses-view">
                     VIEW IMAGE ↗
                   </span>
                 </div>
               </button>
 
-              <div className="training-card-info">
-                <span className="training-category">
+              <div className="courses-card-info">
+                <span className="courses-category">
                   {program.category}
                 </span>
 
                 <h3>{program.title}</h3>
 
-                <p className="training-description">
+                <p className="courses-description">
                   {program.description}
                 </p>
 
-                <div className="training-topics">
+                <div className="courses-topics">
                   {program.topics.map((topic, index) => (
                     <span key={index}>{topic}</span>
                   ))}
                 </div>
 
-                <div className="training-card-footer">
+                <div className="courses-card-footer">
                   <span>FOR: {program.audience.toUpperCase()}</span>
                   <span>{program.date}</span>
                 </div>
@@ -137,38 +137,38 @@ function Training() {
           ))}
         </div>
 
-        <div className="training-scroll-hint">
+        <div className="courses-scroll-hint">
           <span>←</span>
-          <span>SCROLL TO EXPLORE TRAINING</span>
+          <span>SCROLL TO EXPLORE COURSES</span>
           <span>→</span>
         </div>
 
       </div>
 
-      {selectedTraining && (
+      {selectedCourses && (
         <div
-          className="training-modal"
-          onClick={() => setSelectedTraining(null)}
+          className="courses-modal"
+          onClick={() => setSelectedCourses(null)}
         >
           <button
             type="button"
-            className="training-modal-close"
-            onClick={() => setSelectedTraining(null)}
+            className="courses-modal-close"
+            onClick={() => setSelectedCourses(null)}
             aria-label="Close image preview"
           >
             ×
           </button>
 
           <div
-            className="training-modal-content"
+            className="courses-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={selectedTraining.image}
-              alt={selectedTraining.title}
+              src={selectedCourses.image}
+              alt={selectedCourses.title}
             />
 
-            <span>{selectedTraining.title}</span>
+            <span>{selectedCourses.title}</span>
           </div>
         </div>
       )}
