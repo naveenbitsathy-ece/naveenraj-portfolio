@@ -1,9 +1,8 @@
-
 import React, { useRef, useState } from "react";
 import "./Courses.css";
 import SectionHeading from "../components/SectionHeading";
 
-const Courses = [
+const coursesData = [
   {
     id: 1,
     title: "Semi-Custom VLSI Design Training",
@@ -13,27 +12,24 @@ const Courses = [
       "Conducting technical training sessions for students, introducing semi-custom VLSI design concepts, ASIC design flow, and industry-relevant EDA tools.",
     topics: ["Semi-Custom Design", "ASIC Flow", "EDA Tools"],
     date: "08 August 2025",
-    image: "images/certificates/Cadence training.jpg"
+    image: "/images/certificates/Cadence training.jpg",
   },
- {
-  id: 1,
-  title: "Student Mentor – Analog & Digital Design",
-  category: "STUDENT MENTORSHIP",
-  audience: "First-Year Students",
-  description:
-    "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
- 
- 
+  {
+    id: 2,
+    title: "Student Mentor – Analog & Digital Design",
+    category: "STUDENT MENTORSHIP",
+    audience: "First-Year Students",
+    description:
+      "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
     topics: [
-    "Analog Design",
-    "Digital Design",
-    "Hands-on Learning",
-    "Electronics Fundamentals"
-  ],
-  date: "10 October 2025 – 29 November 2025",
-  image: "/images/certificates/training_image.jpg"
-}
-  
+      "Analog Design",
+      "Digital Design",
+      "Hands-on Learning",
+      "Electronics Fundamentals",
+    ],
+    date: "10 October 2025 – 29 November 2025",
+    image: "/images/certificates/training_image.jpg",
+  },
 ];
 
 function Courses() {
@@ -45,14 +41,13 @@ function Courses() {
 
     scrollRef.current.scrollBy({
       left: direction * 360,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   return (
     <section id="courses" className="courses-section">
       <div className="courses-container">
-
         <SectionHeading
           tag="07 // COURSES & TRAINING"
           title="Courses &"
@@ -62,7 +57,7 @@ function Courses() {
 
         <div className="courses-toolbar">
           <span className="courses-count">
-            {String(Courses.length).padStart(2, "0")} PROGRAMS
+            {String(coursesData.length).padStart(2, "0")} PROGRAMS
           </span>
 
           <div className="courses-controls">
@@ -87,9 +82,8 @@ function Courses() {
         </div>
 
         <div className="courses-track" ref={scrollRef}>
-          {Courses.map((course) => (
+          {coursesData.map((course) => (
             <article className="courses-card" key={course.id}>
-
               <button
                 type="button"
                 className="courses-image-button"
@@ -103,23 +97,16 @@ function Courses() {
                     className="courses-image"
                     loading="lazy"
                   />
-
-                  <span className="courses-view">
-                    VIEW IMAGE ↗
-                  </span>
+                  <span className="courses-view">VIEW IMAGE ↗</span>
                 </div>
               </button>
 
               <div className="courses-card-info">
-                <span className="courses-category">
-                  {course.category}
-                </span>
+                <span className="courses-category">{course.category}</span>
 
                 <h3>{course.title}</h3>
 
-                <p className="courses-description">
-                  {course.description}
-                </p>
+                <p className="courses-description">{course.description}</p>
 
                 <div className="courses-topics">
                   {course.topics.map((topic, index) => (
@@ -132,7 +119,6 @@ function Courses() {
                   <span>{course.date}</span>
                 </div>
               </div>
-
             </article>
           ))}
         </div>
@@ -142,7 +128,6 @@ function Courses() {
           <span>SCROLL TO EXPLORE COURSES</span>
           <span>→</span>
         </div>
-
       </div>
 
       {selectedCourse && (
@@ -167,12 +152,10 @@ function Courses() {
               src={selectedCourse.image}
               alt={selectedCourse.title}
             />
-
             <span>{selectedCourse.title}</span>
           </div>
         </div>
       )}
-
     </section>
   );
 }
