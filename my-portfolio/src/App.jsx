@@ -31,7 +31,7 @@ function App() {
         <Education />
         <Blog />
         <Resume />
-     <Courses/>
+        <Courses/>
         <Training />
         <Participation/>
         <BeyondEngineering/>
