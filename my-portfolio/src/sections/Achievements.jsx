@@ -48,7 +48,7 @@ function Achievements() {
     <section id="achievements" className="achievements-section">
       <div className="achievements-container">
         <SectionHeading
-          tag="02 // ACHIEVEMENTS"
+          tag="04 // ACHIEVEMENTS"
           title="Major"
           highlight="Achievements"
           description="Recognitions, competitions, and certifications that reflect hands-on engineering work and technical problem solving."

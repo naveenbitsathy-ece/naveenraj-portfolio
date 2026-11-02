@@ -77,7 +77,7 @@ function Contact() {
       <div className="contact-container">
 
         <SectionHeading
-          tag="08 // GET IN TOUCH"
+          tag="// GET IN TOUCH"
           title="Let's"
           highlight="Connect"
           description="I am interested in connecting with engineers, researchers, and teams working in VLSI, digital design, FPGA development, and hardware acceleration."
