@@ -8,13 +8,17 @@ const coursesData = [
     id: 2,
     title: "Cadence 2-Day Technical Workshop",
     category: "TECHNICAL WORKSHOP",
-    organization: "BIT",
-    year: "2025",
+    audience: "First-Year Students",    
     description:
-      "Two days of hands-on training on semi-custom and full-custom design using Cadence EDA tools by Entuple Technology.",
-    tags: ["Semi-Custom", "Full-Custom", "Cadence EDA"],
-    image: "/images/certificates/entuple_certificate.jpg",
-    link: "https://lnkd.in/p/ghrb-v7C"
+      "Introduced fundamental electronic concepts, practical circuit design, and hardware implementation while encouraging technical exploration and problem-solving.",
+    topics: [
+      "Analog Design",
+      "Digital Design",
+      "Hands-on Learning",
+      "Electronics Fundamentals",
+    ],
+    date: "10 October 2025 – 29 November 2025",
+    image: "/images/certificates/training_image.jpg",
   },
   {
     id: 2,
