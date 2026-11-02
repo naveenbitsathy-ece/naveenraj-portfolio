@@ -51,7 +51,7 @@ function Courses() {
     <section id="courses" className="training-section">
       <div className="training-container">
         <SectionHeading
-          tag="07 // COURSES & TRAINING"
+          tag="07 // COURSES & WORKSHOP"
           title="Courses &"
           highlight="Training"
           description="Exploring various courses and training programs to enhance technical skills and knowledge."
