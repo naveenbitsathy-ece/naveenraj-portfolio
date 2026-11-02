@@ -6,7 +6,7 @@ import SectionHeading from "../components/SectionHeading";
 const coursesData = [
     {
   id: 1,
-  title: "VLSI Design & Verification Training",
+  title: "Maven-silicon VLSI Design & Verification Training",
   category: "INDUSTRY-ORIENTED TRAINING",
   audience: "VLSI Aspirants",
   description:
@@ -19,26 +19,44 @@ const coursesData = [
     "VLSI Design"
   ],
   date: "ONGOING",
+  image: "/images/certificates/maven_logo.jpg"
+},
+
+{
+  id: 2,
+  title: "RISC-V Processor – RV32I Base ISA",
+  category: "INDUSTRY-ORIENTED ONLINE COURSE",
+  audience: "VLSI & RISC-V Aspirants",
+  description:
+    "Successfully completed an online course on the RISC-V Processor, focusing on the RV32I Base Instruction Set Architecture (ISA), offered by Maven Silicon, a RISC-V Training Partner.",
+  topics: [
+    "RISC-V Architecture",
+    "RV32I Base ISA",
+    "Instruction Set Architecture",
+    "Processor Fundamentals",
+    "Maven Silicon"
+  ],
+  date: "27 August 2026",
   image: "/images/certificates/maven_certificate.png"
 },
+
       {
-    id: 2,
+    id: 3,
     title: "Cadence 2-Day Technical Workshop",
     category: "TECHNICAL WORKSHOP",
     audience: "First-Year Students",    
     description:
       "Cadence 2-Day workshop on semi-custom and full-custom VLSI design, covering topics such as analog and digital design, hands-on learning, and electronics fundamentals.",
     topics: [
-      "Analog Design",
-      "Digital Design",
-      "Hands-on Learning",
-      "Electronics Fundamentals",
+      "Semi Custom Design",
+      "Full Custom Design",
+      "EDA tools",
     ],
     date: "07 April 2025 – 08 April 2025",
     image: "/images/certificates/entuple_certificate.jpg",
   },
 {
-  id: 3,
+  id: 4,
   title: "NPTEL – Forests and Their Management",
   category: "NPTEL ONLINE CERTIFICATION",
   audience: "Online Learners",
